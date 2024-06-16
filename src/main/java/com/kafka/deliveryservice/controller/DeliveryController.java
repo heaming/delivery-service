@@ -1,6 +1,5 @@
 package com.kafka.deliveryservice.controller;
 
-import com.kafka.deliveryservice.dto.ProcessDeliveryDto;
 import com.kafka.deliveryservice.dto.RegisterAddressDto;
 import com.kafka.deliveryservice.entity.Delivery;
 import com.kafka.deliveryservice.entity.UserAddress;
@@ -18,11 +17,6 @@ public class DeliveryController {
     @PostMapping("/address")
     public UserAddress registerAddress(@RequestBody RegisterAddressDto request) {
         return deliveryService.addUserAddress(request.userId, request.address, request.alias);
-    }
-
-    @PostMapping("/process-delivery")
-    public Delivery processDelivery(@RequestBody ProcessDeliveryDto request) {
-        return deliveryService.processDelivery(request.orderId, request.productName, request.productCount, request.address);
     }
 
     @GetMapping("/{deliveryId}")
